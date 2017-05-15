@@ -19,6 +19,8 @@ func init() {
 }
 
 func main() {
+	fmt.Println("Listening on port:8920")
+	fmt.Println("Thr trigger url is: /trigger-git?project=xxx")
 	http.HandleFunc("/trigger-git", trigger)
 	http.ListenAndServe(":8920", nil)
 }
