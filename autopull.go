@@ -16,7 +16,12 @@ var (
 )
 
 func init() {
+	fmt.Println("Config:")
 	toml.DecodeFile("/etc/autopull/conf.toml", &conf)
+	for name, url := range conf {
+		fmt.Println(name, ":", url)
+	}
+	fmt.Println("=================")
 }
 
 func main() {
