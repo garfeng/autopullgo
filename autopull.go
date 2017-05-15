@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"os/exec"
@@ -22,7 +23,10 @@ func main() {
 	fmt.Println("Listening on port:8920")
 	fmt.Println("Thr trigger url is: /trigger-git?project=xxx")
 	http.HandleFunc("/trigger-git", trigger)
-	http.ListenAndServe(":8920", nil)
+	err := http.ListenAndServe(":8920", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func trigger(w http.ResponseWriter, r *http.Request) {
